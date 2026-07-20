@@ -16,7 +16,7 @@ defmodule MimeSniff.SignaturesTest do
     test "return list of signature from default_signatures file" do
       default_signatures = Signatures.get_default_signatures()
 
-      assert length(default_signatures) == 50
+      assert length(default_signatures) == 64
 
       assert default_signatures == [
                %HTMLSignature{
@@ -174,6 +174,72 @@ defmodule MimeSniff.SignaturesTest do
                %ExactSignature{
                  byte_pattern: <<26, 69, 223, 163>>,
                  mime_type: "video/webm"
+               },
+               %ExactSignature{
+                 byte_pattern: "fLaC",
+                 mime_type: "audio/flac"
+               },
+               %ExactSignature{
+                 byte_pattern: "#!AMR",
+                 mime_type: "audio/amr"
+               },
+               %ExactSignature{
+                 byte_pattern: <<11, 119>>,
+                 mime_type: "audio/vnd.dolby.dd-raw"
+               },
+               %ExactSignature{
+                 byte_pattern: <<127, 254, 128, 1>>,
+                 mime_type: "audio/vnd.dts"
+               },
+               %ExactSignature{
+                 byte_pattern:
+                   <<48, 38, 178, 117, 142, 102, 207, 17, 166, 217, 0, 170, 0, 98, 206, 108>>,
+                 mime_type: "video/x-ms-asf"
+               },
+               %MaskedSignature{
+                 byte_pattern: <<70, 79, 82, 77, 0, 0, 0, 0, 65, 73, 70, 67>>,
+                 mime_type: "audio/aiff",
+                 pattern_mask: <<255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 102, 116, 121, 112>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 109, 111, 111, 118>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 109, 100, 97, 116>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 102, 114, 101, 101>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 115, 107, 105, 112>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 119, 105, 100, 101>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<0, 0, 0, 0, 112, 110, 111, 116>>,
+                 mime_type: "video/quicktime",
+                 pattern_mask: <<0, 0, 0, 0, 255, 255, 255, 255>>
+               },
+               %MaskedSignature{
+                 byte_pattern: <<255, 224>>,
+                 mime_type: "audio/mpeg",
+                 pattern_mask: <<255, 224>>
                },
                %MaskedSignature{
                  byte_pattern:
