@@ -42,8 +42,10 @@ MaskedSignature,52 49 46 46 00 00 00 00 41 56 49 20,FF FF FF FF 00 00 00 00 FF F
 MaskedSignature,52 49 46 46 00 00 00 00 57 41 56 45,FF FF FF FF 00 00 00 00 FF FF FF FF,audio/wave
 # Matching 3GPP video
 MaskedSignature,00 00 00 00 66 74 79 70 33 67 70 34 00,00 00 00 00 FF FF FF FF FF FF FF FF FF,video/3gpp
+# Matching HEIF image
+ISOMediaSignature,68 65 69 63,image/heic
 # 6.2.1 Matching a MP4 pattern https://mimesniff.spec.whatwg.org/#signature-for-mp4
-MP4Signature
+ISOMediaSignature,6D 70 34,video/mp4
 # 6.2.2 Matching a WebM pattern https://mimesniff.spec.whatwg.org/#signature-for-webm
 # only check first four bytes
 # TODO: complete implement this algorithm  
@@ -63,7 +65,7 @@ ExactSignature,7F FE 80 01,audio/vnd.dts
 ExactSignature,30 26 B2 75 8E 66 CF 11 A6 D9 00 AA 00 62 CE 6C,video/x-ms-asf
 # AIFF-C ("FORM" .... "AIFC"; plain AIFF is in the WHATWG table above)
 MaskedSignature,46 4F 52 4D 00 00 00 00 41 49 46 43,FF FF FF FF 00 00 00 00 FF FF FF FF,audio/aiff
-# QuickTime top-level atoms at offset 4. Listed after MP4Signature so
+# QuickTime top-level atoms at offset 4. Listed after the ISOMediaSignature entries so
 # mp4-branded ftyp boxes resolve to video/mp4 first.
 MaskedSignature,00 00 00 00 66 74 79 70,00 00 00 00 FF FF FF FF,video/quicktime
 MaskedSignature,00 00 00 00 6D 6F 6F 76,00 00 00 00 FF FF FF FF,video/quicktime
